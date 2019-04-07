@@ -18,6 +18,7 @@ public class PreguntaUI extends JFrame {
     }
 
     public PreguntaUI(){
+        System.out.println("Jose Medina");
         this.startJFrame(this);
     }
 
