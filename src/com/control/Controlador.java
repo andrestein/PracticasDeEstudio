@@ -13,11 +13,12 @@ public class Controlador {
         String sql1 = "SELECT * FROM pregunta";
         ResultSet rs = st.executeQuery(sql1);
         while(rs.next()){
-        }h
-        }catch(Exception e){
-            
+            System.out.println(rs.getString(1));
         }
-        
+        }catch(Exception e){
+
+        }
+
     }
     public void conexion(){
         
@@ -33,6 +34,12 @@ public class Controlador {
             
             if (!conn.isClosed())
                 System.out.println("Database connection working using TCP/IP...");
+                Statement st = conn.createStatement();
+                String sql1 = "SELECT * FROM pregunta";
+                ResultSet rs = st.executeQuery(sql1);
+                while(rs.next()){
+                    System.out.println(rs.getString(2)+rs.getString(3)+rs.getInt(4));
+                }
             } catch (Exception e){
                 System.err.println("Exception: "+e.getMessage());
             }finally {
@@ -42,6 +49,5 @@ public class Controlador {
             }catch(SQLException e){
             }
         }
-        
     }
 }
