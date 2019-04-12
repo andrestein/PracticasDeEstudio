@@ -1,5 +1,6 @@
 package com.view;
 
+import com.control.Controlador;
 import com.model.Pregunta;
 
 import javax.swing.*;
@@ -13,8 +14,11 @@ public class PreguntaUI extends JFrame {
 
     public static void main(String[] args) {
 //        Este fragmento Genera la vista inicial
-        PreguntaUI vist = new PreguntaUI();
-        vist.setVisible(true);
+        Controlador control = new Controlador();
+        control.conexion();
+        control.Consulta();
+        //PreguntaUI vist = new PreguntaUI();
+        //vist.setVisible(true);
     }
 
     public PreguntaUI(){
