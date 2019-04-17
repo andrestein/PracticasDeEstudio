@@ -9,16 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
 public class PreguntaUI extends JFrame {
 
     public static void main(String[] args) {
-//        Este fragmento Genera la vista inicial
-        Controlador control = new Controlador();
-        control.conexion();
-        control.Consulta();
-        //PreguntaUI vist = new PreguntaUI();
-        //vist.setVisible(true);
+//      Este fragmento Genera la vista inicial
+        
+        
+        PreguntaUI vist = new PreguntaUI();
+        vist.setVisible(true);
     }
 
     public PreguntaUI(){
@@ -31,11 +31,9 @@ public class PreguntaUI extends JFrame {
      * @param vista Se pasa como parametro la vista actual
      */
     private void startJFrame(JFrame vista){
-        //Este codigo Genera una pregunta
-        String[] answers = new String[]{"Homero", "Uribe", "Tromp", "Jose"};
-        Pregunta pregunta = new Pregunta("¿Quien escribio la odisea?", "Homero", answers);
-        String[] answers2 = new String[]{"Colombia", "Italia", "Francia", "No se :V"};
-        Pregunta pregunta2 = new Pregunta("¿Donde esta la torre eiffel?", "No se :V", answers2);
+        
+        
+        
         //Desde aqui se configura la interfaz
         vista.setBounds(320,90,800,600);
         vista.setLayout(new GridLayout());
@@ -75,9 +73,19 @@ public class PreguntaUI extends JFrame {
 
             }
         });
-        PreguntaPanel panel = new PreguntaPanel(pregunta);
-        PreguntaPanel panel2 = new PreguntaPanel(pregunta2);
-        vista.add(panel);
-        vista.add(panel2);
+        Controlador control = new Controlador();
+        control.conexion();
+        ArrayList<Pregunta> question;
+        question=control.Consulta();
+        if (question != null) {
+        for(Pregunta objeto: question) {
+        	PreguntaPanel panel = new PreguntaPanel(objeto);
+        	vista.add(panel);
+        }
+        }
+        
+        
+        
+        
     }
 }
